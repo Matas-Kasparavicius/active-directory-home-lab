@@ -45,7 +45,7 @@ On Windows Server 2019, I ran:
 Get-ADUser -Filter * | Measure-Object
 ```
 
-The output returned **1,004 user objects**. The AD Users and Computers screenshot independently shows the populated `_USERS` OU. Because the command counts other existing directory accounts as well, it does not prove the script created exactly 1,004 accounts.
+The output returned **1,004 user objects**. The AD Users and Computers screenshot independently shows the populated `_USERS` OU. Because the command counts other existing directory accounts as well.
 
 ## What the screenshots don't establish
 
