@@ -2,7 +2,7 @@
 
 I built a Windows domain lab in **Oracle VirtualBox** using **Windows Server 2019** and a **Windows 10** client. The server runs Active Directory Domain Services (AD DS), DNS and DHCP, with RRAS/NAT set up between its internal and external network interfaces. I also used PowerShell to create approximately 1,000 test accounts.
 
-The aim was to get practical experience with Windows Server administration and see how directory services, IP addressing and client connectivity depend on one another. This is a guided home lab; I've credited the source material in [References and acknowledgements](#references-and-acknowledgements).
+The aim was to get practical experience with Windows Server administration and see how directory services, IP addressing and client connectivity depend on one another. This is a guided home lab, I've credited the source material in [References and acknowledgements](#references-and-acknowledgements).
 
 ## Lab architecture
 
@@ -58,7 +58,7 @@ These observations come from screenshots of my running virtual machines—not ju
 | PowerShell / AD | `Get-ADUser -Filter * \| Measure-Object` returned **1,004 user objects** | [PowerShell output](images/05-user-provisioning.png) |
 | Windows 10 client | `CLIENT1` received `172.16.0.100/24`, with gateway, DHCP and DNS server `172.16.0.1` | [Client `ipconfig /all`](images/06-client-validation.png) |
 
-The PowerShell count includes other directory accounts; it is **not** a claim that the script created exactly 1,004 users. The client screenshot also shows a `mydomain` account context. I have not separately recorded proof of a fresh online domain sign-in, domain-controller discovery or successful outbound NAT traffic. The [testing page](docs/testing-and-results.md) separates confirmed observations from checks that were not captured.
+The PowerShell count includes other directory accounts, it is not a claim that the script created exactly 1,004 users. The client screenshot also shows a `mydomain` account context. I have not separately recorded proof of a fresh online domain sign-in, domain-controller discovery or successful outbound NAT traffic. The [testing page](docs/testing-and-results.md) separates confirmed observations from checks that were not captured.
 
 ## Practical skills covered
 
