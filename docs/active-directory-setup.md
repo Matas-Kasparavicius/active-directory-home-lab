@@ -31,6 +31,6 @@ A separate PowerShell query returned **1,004 directory user objects**. That coun
 
 ## Windows 10 domain client
 
-`CLIENT1` is the Windows 10 VM connected to the private lab network. Its captured Command Prompt output shows the `mydomain\sbeater` account context and the expected DHCP-assigned network settings. The `whoami` output identifies the account in use; on its own, it doesn't establish whether Windows performed a fresh online authentication rather than using cached credentials.
+`CLIENT1` is the Windows 10 VM connected to the private lab network. Its captured Command Prompt output shows the `mydomain\sbeater` account context and the expected DHCP-assigned network settings. The `whoami` output identifies the account in use.
 
 The distinction between what is visible and what was not separately tested is recorded in [Testing and results](testing-and-results.md).
