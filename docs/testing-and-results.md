@@ -2,7 +2,7 @@
 
 [← Back to project overview](../README.md)
 
-This page brings together the evidence captured from the Windows Server 2019 and Windows 10 VMs. I have separated **configuration shown in the screenshots**, **results actually observed**, and **checks that weren't recorded**, so the project doesn't claim more than the evidence supports.
+This page brings together the evidence captured from the Windows Server 2019 and Windows 10 VMs.
 
 ## Recorded evidence
 
@@ -29,7 +29,7 @@ whoami
 
 *`CLIENT1` received `172.16.0.100/24`, with DHCP, DNS and gateway set to `172.16.0.1`. The account context was `mydomain\sbeater`.*
 
-The `172.16.0.100` address falls within the scope configured on the server. Along with the displayed DHCP server and network options, this confirms the client successfully received its expected IPv4 configuration at the time of capture. The `whoami` result identifies the signed-in security context, but it does not on its own prove a new online authentication against the DC.
+The `172.16.0.100` address falls within the scope configured on the server. Along with the displayed DHCP server and network options, this confirms the client successfully received its expected IPv4 configuration at the time of capture.
 
 ### A DHCP issue during evidence capture
 
@@ -46,29 +46,3 @@ Get-ADUser -Filter * | Measure-Object
 ```
 
 The output returned **1,004 user objects**. The AD Users and Computers screenshot independently shows the populated `_USERS` OU. Because the command counts other existing directory accounts as well.
-
-## What the screenshots don't establish
-
-The current evidence doesn't independently establish **fresh online domain authentication**, **live DC discovery** or **successful outbound traffic through NAT**. RRAS's interface list shows that the NAT interfaces are present, not that packets have been translated successfully.
-
-For reference, these are examples of useful checks, **not results that were captured for this project**:
-
-| Purpose | Command |
-| --- | --- |
-| Domain membership on Windows 10 | `(Get-CimInstance Win32_ComputerSystem).PartOfDomain` |
-| Locate a domain controller | `nltest /dsgetdc:mydomain.com` |
-| Inspect AD DNS service records | `nslookup -type=SRV _ldap._tcp.dc._msdcs.mydomain.com` |
-| Check outbound TCP connectivity | `Test-NetConnection 1.1.1.1 -Port 443` |
-
-A working TCP connection would support an outbound-connectivity finding, but a failed one would need further investigation before drawing conclusions about NAT.
-
-## Troubleshooting reference
-
-These are general checks for similar labs, **not additional incidents claimed to have happened here**.
-
-| Symptom | Area to inspect |
-| --- | --- |
-| Client receives `169.254.x.x` | Server availability, matching VirtualBox internal networks and DHCP service/scope |
-| Client has an IP but can't locate the domain | DNS server setting and AD-related DNS records |
-| Client has DHCP settings but no external access | RRAS interface roles, NAT configuration and the external network path |
-| Domain account login fails | DNS, domain membership, account state and time synchronisation |
