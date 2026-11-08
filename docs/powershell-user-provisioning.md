@@ -8,7 +8,7 @@ Creating hundreds of accounts one at a time in Active Directory Users and Comput
 
 The script creates Active Directory user objects in bulk rather than requiring each one to be entered through the GUI. The underlying PowerShell command used for creating AD accounts is `New-ADUser`. This was a practical way to work with a populated directory and see how scripting can support routine administration.
 
-The `_USERS` organisational unit is populated with test accounts in the [Active Directory console screenshot](../images/02-active-directory-users.png). I haven't included a local copy of the provisioning script because the exact version used in the VM has not been supplied for review.
+The `_USERS` organisational unit is populated with test accounts in the [Active Directory console screenshot](../images/02-active-directory-users.png). I haven't included a local copy of the provisioning script but I have included the source to it [here](https://github.com/Matas-Kasparavicius/active-directory-home-lab/blob/main/README.md#references-and-acknowledgements).
 
 ## Checking the directory
 
